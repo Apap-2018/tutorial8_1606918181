@@ -25,7 +25,7 @@ public class UserRoleController {
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST) 
 	public String addUserSubmit(@ModelAttribute UserRoleModel user, Model model) {
-		String text = "";
+		String message = "";
 		if(this.validatePassword(user.getPassword())) {
 			userService.addUser(user);
 			message = null;
@@ -45,7 +45,7 @@ public class UserRoleController {
 		
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		UserRoleModel user = userService.findUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		String text = "";
+		String message = "";
 		
 		if (this.validatePassword(password.getPasswordLama()) && this.validatePassword(password.getPasswordBaru()) && this.validatePassword(password.getPasswordKonfirmasi())) {
 			if (password.getPasswordKonfirmasi().equals(password.getPasswordBaru())) {
@@ -70,8 +70,8 @@ public class UserRoleController {
 		return modelAndView;
 	}
 
-	private boolean validatePassword(String passwordBaru) {
-		if (passwordBaru.length()>=8 && Pattern.compile("[a-zA-Z]").matcher(passwordBaru).find() && Pattern.compile("[0-9]").matcher(passwordBaru).find()) {
+	public boolean validatePassword(String password) {
+		if (password.length()>=8 && Pattern.compile("[a-zA-Z]").matcher(password).find() && Pattern.compile("[0-9]").matcher(password).find()) {
 			return true;
 		}
 		return false;

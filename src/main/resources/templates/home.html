@@ -13,7 +13,7 @@
 
     <div class="container-fluid">
         <h2 th:text=" 'Hello ' + ${#httpServletRequest.remoteUser} + ' !'">Login as</h2>
-        
+        <p th:text="${message}"></p>
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
@@ -54,15 +54,15 @@
                     	<form th:action="@{/user/updatePassword}" method="post">
    							<div class="row form-group">
    								<label class="col-sm-4">Password Lama</label>
-   								<input class="col-sm-8 form-control input-sm" id="passwordLama" type="password" name="passLama">
+   								<input class="col-sm-8 form-control input-sm" id="passwordLama" type="password" name="passwordLama">
    							</div>
    							<div class="row form-group">
    								<label class="col-sm-4">Password Baru</label>
-   								<input class="col-sm-8 form-control input-sm" id="passwordBaru" type="password" name="passBaru">
+   								<input class="col-sm-8 form-control input-sm" id="passwordBaru" type="password" name="passwordBaru">
    							</div>                    	
    							<div class="row form-group">
    								<label class="col-sm-4">Konfirmasi Password Baru</label>
-   								<input class="col-sm-8 form-control input-sm" id="passwordKonfirmasi"type="password" name="passKonfirmasi">
+   								<input class="col-sm-8 form-control input-sm" id="passwordKonfirmasi"type="password" name="passwordKonfirmasi">
    							</div>
  							<div>
  								<button type="submit" class="btn btn-primary">Simpan</button>
